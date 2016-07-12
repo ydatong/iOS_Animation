@@ -59,6 +59,18 @@ center 和 position 都代表anchorPoint的位置
 
 ### <font color=blue>4.Visual Effects</font>
 >  Instead of being drawn inside the parent, the mask layer defines the part of the parent layer that is visible.The color of the mask layer is irrelevant; all that matters is its silhouette. The mask acts like a cookie cutter; the solid part of the mask layer will be “cut out” of its parent layer and kept; anything else is discarded (see Figure 4.12).If the mask layer is smaller than the parent layer, only the parts of the parent (or its sub- layers) that intersect the mask will be visible. If you are using a mask layer, anything outside of that layer is implicitly hidden.
+
+可以通过CALayer得到多样的视觉效果：
+
+* **圆角**
+
+  > Setting the radius to a value greater than 0.0 causes the layer to begin drawing rounded corners on its background. By default, the corner radius does not apply to the image in the layer’s contents property; it applies only to the background color and border of the layer. However, setting the masksToBounds property to YES causes the content to be clipped to the rounded corners.
+   
+* **layer边界**
+* **阴影**
+* **layer masking**
+* **Scaling filters**
+* **Group Opacity**
 
 
 ### <font color=blue>5.Transforms</font>
@@ -108,34 +120,4 @@ What we really want is a UILabel subclass that actually uses a CATextLayer as it
 * #### AVPlayerLayer
 
 ***
-
-**创建仿射变换矩阵**
-
-`
-CGAffineTransformMakeRotation(CGFloat angle) CGAffineTransformMakeScale(CGFloat sx, CGFloat sy) CGAffineTransformMakeTranslation(CGFloat tx, CGFloat ty)
-`
-
-**在已经存在的矩阵上创建新的矩阵**
-`CGAffineTransformRotate(CGAffineTransform t, CGFloat angle) CGAffineTransformScale(CGAffineTransform t, CGFloat sx, CGFloat sy) CGAffineTransformTranslate(CGAffineTransform t, CGFloat tx, CGFloat ty)
-`
-
-** 单位矩阵（identity matrix）**
-
-`CGAffineTransformIdentity`
-**两个矩阵结合**
-`
-CGAffineTransformConcat(CGAffineTransform t1, CGAffineTransform t2)`
-### 3D Transforms (4*4的矩阵)
-创建:
-
-`
-CATransform3DMakeRotation(CGFloat angle, CGFloat x, CGFloat y, CGFloat z)`
-
-` CATransform3DMakeScale(CGFloat sx, CGFloat sy, CGFloat sz) `
-
-` CATransform3DMakeTranslation(Gloat tx, CGFloat ty, CGFloat tz)
-`
-## II: Setting Things In Motion### <font color=blue>1.隐式动画</font>
-> When you change a property, how does Core Animation determine the type and duration of the animation that it will perform? The duration of the animation is specified by the settings for the current transaction, and the animation type is controlled by layer actions.
-
-> Transactions are the mechanism that Core Animation uses to encapsulate a particular set of property animations. Any animatable layer properties that are changed within a given transaction will not change immediately, but instead will begin to animate to their new value as soon as that transaction is committed.### <font color=blue>2.显示动画</font>### <font color=blue>3.Layer Time</font>### <font color=blue>4.Easing</font>### <font color=blue>5.Timer-based Animation</font>
+
